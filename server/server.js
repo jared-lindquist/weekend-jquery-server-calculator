@@ -17,31 +17,42 @@ app.use(express.static('server/public'));
     //answer: *output value of the calc function that is run
 // })
 
-//**all calculation functions need to be in this file */
+//**all calculation functions need to be in this file  in app.use */
 
 
-//app.get(/*insert route here, (req, res) => {
-    // console.log('request for *insert route here was made');
-//send back calculation history items
-//so we can see it in the browser
+app.get('/calculations', (req, res) => {
+    console.log('request for calculations was made');
+// send back calculation history items
+// so we can see it in the browser
 
-//res.send(*insert module here) **if we use a module to store the 
-//calculation history
-//res.sendStatus(200);
-// })
+res.send(caclulationHistory);
 
-//app.post('/*insert route here, (req, res) => {
+})
 
-//console.log('we are posting', req.body);
+app.post('/calculations', (req, res) => {
 
-//let item = req.body;
-//inventory.push(item);
+console.log('we are posting', req.body);
+//call the math function
+let item = req.body
+let answer = math(item.num1, item.num2, item.operator);
+caclulationHistory.push(answer);
 
-//send this response in every post request
-//res.sendStatus(200);
-// })
+// send this response in every post request
+res.sendStatus(200);
+})
 
 app.listen(port, () => {
     console.log('listening on port', port);
 })
 
+function math() {
+    if ( operator == '*'){
+    return num1 * num2;  
+} else if (operator == '-') {
+    return num1 - num2;
+} else if (operator == '+') {
+    return num1 + num2;
+}else if (operator == '/') {
+    return num1 / num2;
+}
+}

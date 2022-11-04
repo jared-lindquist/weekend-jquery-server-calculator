@@ -5,22 +5,20 @@ function onReady() {
 
     //getCalculations(); //this could be how we keep the calc history on the DOM?
     //create click listener for the submit(=)btn
-    //$('#submit').on('click', )
-    //create click listeners for the (+, -, *, %)btns
-    //how do I create click listeners that rely on multiple inputs
-    //and multiple button clicks
-}
+    $('#submit').on('click', addCalculation );
 
-//function getCalculations() {
-    //console.log('we are getting calculations from the server);
-    //$.ajax({
-        //method: 'GET',
-        //url: /*insert route here
-    //}).then(function(response) {
-        //console.log('wahoo!', response);
-        //renderToDom(response);//should we use this?
-    //}).catch(function(error) {
-        //alert('Too bad so sad :()
+ }
+
+// function getCalculations() {
+//     console.log('we are getting calculations from the server');
+//     $.ajax({
+//         method: 'GET',
+//         url: '/calculations',//matches with server js:23
+//     }).then(function(response) {
+//         console.log('wahoo!', response);
+//         renderToDom(response);//should we use this?
+//     }).catch(function(error) {
+//         alert('Too bad so sad', error);
 //     })
 // }
 
@@ -30,24 +28,26 @@ function onReady() {
     //for (let output of calculations) {
         //$('#output').append(`
             //<li>
-                //place holder for num1, calc function, num2, output
+                //item.num1, item.operator, item.num2, '=',  item.answer
             //</li>
 //         `)
 //     }
 // }
 
-//function addCalculation() {
-    //$.ajax({
-    //method: 'POST',
-    //url: *insert route here
-    //data: ${num1 input}.val(),
-        //  ${calcFunction} how do we capture this?,
-        //  ${num2 input}.val(),
-        //  ${output}.val()
-    // }).then(function(response) {
-        //console.log('very nice');
-        //getCalculations(); //Must get updated data from server
-    // }).catch(function(error) {
-        //alert('not good', error)
-    // })
+// function addCalculation() {
+//     $.ajax({
+//     method: 'POST',
+//     url: '/calculations',
+//     data: {
+//         num1: ${num1 input}.val(),
+//          operator: ${calcFunction} 'how do we capture this?',
+//          num2: ${num2 input}.val(),
+//          
+//     }
+//     }).then(function(response) {
+//         console.log('very nice');
+//         getCalculations(); //Must get updated data from server
+//     }).catch(function(error) {
+//         alert('not good', error)
+//     })
 // }

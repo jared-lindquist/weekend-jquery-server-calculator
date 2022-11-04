@@ -1,4 +1,21 @@
 .function {
-    height: 100px;
-    width: 100px;
+    height: 50px;
+    width: 50px;
+}
+
+#submit {
+    height: 50px;
+    width: 50px;
+}
+
+#clear {
+    height: 50px;
+    width: 50px;
+}
+
+#num1 {
+    height: 50px;
+}
+#num2 {
+    height: 50px;
 }
