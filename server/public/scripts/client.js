@@ -5,8 +5,10 @@ function onReady() {
 
     //getCalculations(); //this could be how we keep the calc history on the DOM?
     //create click listener for the submit(=)btn
+    //$('#submit').on('click', )
     //create click listeners for the (+, -, *, %)btns
-    //
+    //how do I create click listeners that rely on multiple inputs
+    //and multiple button clicks
 }
 
 //function getCalculations() {

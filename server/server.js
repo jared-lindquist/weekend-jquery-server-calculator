@@ -10,6 +10,15 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('server/public'));
 
+//let calculationHistory = ({
+    //num1: ${num1}.val(),
+    //calcFunction: *how do we define which button was clicked?
+    //num2: ${num2}.val(),
+    //answer: *output value of the calc function that is run
+// })
+
+//**all calculation functions need to be in this file */
+
 
 //app.get(/*insert route here, (req, res) => {
     // console.log('request for *insert route here was made');
