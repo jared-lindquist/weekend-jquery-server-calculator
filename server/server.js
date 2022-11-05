@@ -36,7 +36,7 @@ app.post('/calculations', (req, res) => {
     }
 
 //push object to the calculationHistory array
-caclulationHistory.push(calcObj);
+calculationHistory.push(calcObj);
 console.log('the latest calculations are:', calcObj);
 res.sendStatus(200);
 })
