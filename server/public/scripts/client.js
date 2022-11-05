@@ -44,10 +44,12 @@ function renderToDom() {
      url: '/calculations'
     }).then( (response) => {
         $('#history').empty();
-            for (let calculations of response) {
-        $('#output').append(`
+
+        for (let calculations of response) {
+        $('#history').append(`
             <li>
-            calculations.num1, calculations.operator, calculations.num2, '=',  calculations.answer
+           ${calculations.num1} , ${calculations.operator}, 
+           ${calculations.num2}, =,  ${calculations.answer}
             </li>
         `)//end append
       }// end for loop
