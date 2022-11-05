@@ -1,53 +1,46 @@
 const express = require('express');
 const app = express();
 const port = 5000;
-
-//do we need to add a module to hold the calculation history in?
-// let inventory = require('./modules/*insert route here')
-
 let bodyParser = require('body-parser');
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('server/public'));
 
 let calculationHistory = [];
 
-//**all calculation functions need to be in this file  in app.use */
+//**all calculation functions need to be in this file  in app.post */
 
 
 app.get('/calculations', (req, res) => {
     console.log('request for calculations was made');
-// send back calculation history items
-// so we can see it in the browser
+// send back calculation history items so we can see it in the browser
 console.log('calculationHistory');
-res.send(calculationHistory);
+res.send(calculationHistory);//send array to ajax in renderToDom function
 
 })
 
 app.post('/calculations', (req, res) => {
+    console.log('we are posting', req.body);
+    //assign data from client.js POST request to a variable
+    let calcObj = req.body
 
-console.log('we are posting', req.body);
-//call the math function
-let calcObj = req.body
-math(calcObj.num1, calcObj.operator, calcObj.num2, calcObj.answer);
-caclulationHistory.push(answer);//am I calling this correctly?
+    if ( calcObj.operator == '*'){
+    calcObj.answer =  calcObj.num1 * calcObj.num2;  //calcObj.answer is being created as a property here
+    } else if (calcObj.operator == '-') {
+    calcObj.answer =  calcObj.num1 - calcObj.num2;
+    } else if (calcObj.operator == '+') {
+    calcObj.answer = calcObj.num1 + calcObj.num2;
+    }else if (calcObj.operator == '/') {
+    calcObj.answer = calcObj.num1 / calcObj.num2;
+    }
 
-// send this response in every post request
+//push object to the calculationHistory array
+caclulationHistory.push(calcObj);
+console.log('the latest calculations are:', calcObj);
 res.sendStatus(200);
 })
 
 app.listen(port, () => {
     console.log('listening on port', port);
 })
-
-function math() {
-    if ( calcObj.operator == '*'){
-    calcObj.answer =  calcObj.num1 * calcObj.num2;  
-} else if (calcObj.operator == '-') {
-    calcObj.answer =  calcObj.num1 - calcObj.num2;
-} else if (calcObj.operator == '+') {
-    calcObj.answer = calcObj.num1 + calcObj.num2;
-}else if (calcObj.operator == '/') {
-    calcObj.answer = calcObj.num1 / calcObj.num2;
-}
-}

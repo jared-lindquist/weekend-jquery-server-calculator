@@ -1,17 +1,25 @@
 $(document).ready(onReady);
 
+let operator = grabSign;
+
 function onReady() {
     console.log('ready');
 
     getCalculations(); //this could be how we keep the calc history on the DOM?
     //create click listener for the submit(=)btn
     $('#submit').on('click', storeCalculation );
-    $('.mathOperator').on('click', registerClick);
+    $('.mathOperator').on('click', grabSign);
     $('#clear').on('click', emptyInputs);
- }
+    }
+//$("button").click(function() {
+//     var button = $(this).val();
+//     alert(button);
+// });
 
- function registerClick() {
+
+ function grabSign() {
     console.log('registering operator click');//correctly registering click
+    $(this).text();
  }
 
  
@@ -48,7 +56,7 @@ function renderToDom() {
 
 function storeCalculation() {
     console.log('in storeCalculation');
-    let operator = $(this).text();//i think this needs to change
+    // let operator = grabSign;//i think this needs to change
     $.ajax({
     method: 'POST',
     url: '/calculations',
