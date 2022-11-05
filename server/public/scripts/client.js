@@ -39,7 +39,7 @@ function renderToDom() {
             for (let calculations of response) {
         $('#output').append(`
             <li>
-                item.num1, item.operator, item.num2, '=',  item.answer
+            calculations.num1, calculations.operator, calculations.num2, '=',  calculations.answer
             </li>
         `)//end append
       }// end for loop
@@ -47,7 +47,7 @@ function renderToDom() {
 }//end ajax
 
 function storeCalculation() {
-    console.log('in addCalculation');
+    console.log('in storeCalculation');
     let operator = $(this).text();//i think this needs to change
     $.ajax({
     method: 'POST',

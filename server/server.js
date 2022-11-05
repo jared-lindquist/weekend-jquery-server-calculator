@@ -28,9 +28,9 @@ app.post('/calculations', (req, res) => {
 
 console.log('we are posting', req.body);
 //call the math function
-let item = req.body
-let answer = math(item.num1, item.operator, item.num2);
-caclulationHistory.push(answer);
+let calcObj = req.body
+math(calcObj.num1, calcObj.operator, calcObj.num2, calcObj.answer);
+caclulationHistory.push(answer);//am I calling this correctly?
 
 // send this response in every post request
 res.sendStatus(200);
@@ -41,13 +41,13 @@ app.listen(port, () => {
 })
 
 function math() {
-    if ( item.operator == '*'){
-    return item.num1 * item.num2;  
-} else if (item.operator == '-') {
-    return item.num1 - item.num2;
-} else if (item.operator == '+') {
-    return item.num1 + item.num2;
-}else if (item.operator == '/') {
-    return item.num1 / item.num2;
+    if ( calcObj.operator == '*'){
+    calcObj.answer =  calcObj.num1 * calcObj.num2;  
+} else if (calcObj.operator == '-') {
+    calcObj.answer =  calcObj.num1 - calcObj.num2;
+} else if (calcObj.operator == '+') {
+    calcObj.answer = calcObj.num1 + calcObj.num2;
+}else if (calcObj.operator == '/') {
+    calcObj.answer = calcObj.num1 / calcObj.num2;
 }
 }
