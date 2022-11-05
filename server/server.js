@@ -24,7 +24,7 @@ app.get('/calculations', (req, res) => {
     console.log('request for calculations was made');
 // send back calculation history items
 // so we can see it in the browser
-
+//console.log('calculationHistory');
 res.send(caclulationHistory);
 
 })
@@ -34,7 +34,7 @@ app.post('/calculations', (req, res) => {
 console.log('we are posting', req.body);
 //call the math function
 let item = req.body
-let answer = math(item.num1, item.num2, item.operator);
+let answer = math(item.num1, item.operator, item.num2);
 caclulationHistory.push(answer);
 
 // send this response in every post request
@@ -47,12 +47,12 @@ app.listen(port, () => {
 
 function math() {
     if ( operator == '*'){
-    return num1 * num2;  
+    return item.num1 * item.num2;  
 } else if (operator == '-') {
-    return num1 - num2;
+    return item.num1 - item.num2;
 } else if (operator == '+') {
-    return num1 + num2;
+    return item.num1 + item.num2;
 }else if (operator == '/') {
-    return num1 / num2;
+    return item.num1 / item.num2;
 }
 }
