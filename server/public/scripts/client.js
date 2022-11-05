@@ -1,6 +1,6 @@
 $(document).ready(onReady);
 
-let operator = grabSign;
+let operator = '';
 
 function onReady() {
     console.log('ready');
@@ -19,7 +19,8 @@ function onReady() {
 
  function grabSign() {
     console.log('registering operator click');//correctly registering click
-    $(this).text();
+     operator = $(this).text();
+     console.log('operator is:', operator);
  }
 
  
@@ -48,8 +49,8 @@ function renderToDom() {
         for (let calculations of response) {
         $('#history').append(`
             <li>
-           ${calculations.num1} , ${calculations.operator}, 
-           ${calculations.num2}, =,  ${calculations.answer}
+           ${calculations.num1}  ${calculations.operator}
+           ${calculations.num2}  =  ${calculations.answer}
             </li>
         `)//end append
       }// end for loop
@@ -58,17 +59,17 @@ function renderToDom() {
 
 function storeCalculation() {
     console.log('in storeCalculation');
-    // let operator = grabSign;//i think this needs to change
+    console.log(operator);
     $.ajax({
     method: 'POST',
     url: '/calculations',
     data: {
         num1: $('#num1').val(),
-         operator: operator,//same here starting on js:44
-         num2: $('#num2').val(),    
+        operator: operator,
+        num2: $('#num2').val(),    
     }
     }).then(function(response) {
-        console.log('very nice');
+        console.log(response);
         emptyInputs();
         renderToDom();
         getCalculations(); //Must get updated data from server

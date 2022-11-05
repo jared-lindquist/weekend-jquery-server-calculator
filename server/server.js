@@ -24,16 +24,16 @@ app.post('/calculations', (req, res) => {
     console.log('we are posting', req.body);
     //assign data from client.js POST request to a variable
     let calcObj = req.body
-
-    if ( calcObj.operator == '*'){
+    console.log(calcObj);
+    if ( calcObj.operator == 'x'){
     calcObj.answer =  calcObj.num1 * calcObj.num2;  //calcObj.answer is being created as a property here
     } else if (calcObj.operator == '-') {
     calcObj.answer =  calcObj.num1 - calcObj.num2;
     } else if (calcObj.operator == '+') {
-    calcObj.answer = calcObj.num1 + calcObj.num2;
-    }else if (calcObj.operator == '/') {
+    calcObj.answer = Number(calcObj.num1) + Number(calcObj.num2);
+    } else if (calcObj.operator == '/') {
     calcObj.answer = calcObj.num1 / calcObj.num2;
-    }
+    } else console.log('nothing adds up');
 
 //push object to the calculationHistory array
 calculationHistory.push(calcObj);
