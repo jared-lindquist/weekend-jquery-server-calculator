@@ -10,12 +10,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(express.static('server/public'));
 
-//let calculationHistory = ({
-    //num1: ${num1}.val(),
-    //calcFunction: *how do we define which button was clicked?
-    //num2: ${num2}.val(),
-    //answer: *output value of the calc function that is run
-// })
+let calculationHistory = [];
 
 //**all calculation functions need to be in this file  in app.use */
 
@@ -24,8 +19,8 @@ app.get('/calculations', (req, res) => {
     console.log('request for calculations was made');
 // send back calculation history items
 // so we can see it in the browser
-//console.log('calculationHistory');
-res.send(caclulationHistory);
+console.log('calculationHistory');
+res.send(calculationHistory);
 
 })
 
@@ -46,13 +41,13 @@ app.listen(port, () => {
 })
 
 function math() {
-    if ( operator == '*'){
+    if ( item.operator == '*'){
     return item.num1 * item.num2;  
-} else if (operator == '-') {
+} else if (item.operator == '-') {
     return item.num1 - item.num2;
-} else if (operator == '+') {
+} else if (item.operator == '+') {
     return item.num1 + item.num2;
-}else if (operator == '/') {
+}else if (item.operator == '/') {
     return item.num1 / item.num2;
 }
 }
