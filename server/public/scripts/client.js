@@ -58,6 +58,7 @@ function renderToDom() {
 }//end ajax
 
 function storeCalculation() {
+
     console.log('in storeCalculation');
     console.log(operator);
     $.ajax({
